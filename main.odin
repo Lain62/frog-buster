@@ -91,7 +91,24 @@ Scenes :: enum {
 }
 
 make_textures :: proc() -> Textures {
+    when ODIN_OS == .Windows { 
     return Textures {
+	sky = rl.LoadTexture(".\\sprites\\sky.png"),
+	grass = rl.LoadTexture(".\\sprites\\grass-1.png"),
+	grass2 = rl.LoadTexture(".\\sprites\\grass-2.png"),
+	player_g = rl.LoadTexture(".\\sprites\\player-grab.png"),
+	player_n = rl.LoadTexture(".\\sprites\\player-neutral.png"),
+	player_t = rl.LoadTexture(".\\sprites\\player-throw.png"),
+	player_h = rl.LoadTexture(".\\sprites\\player-hurt.png"),
+	enemy = rl.LoadTexture(".\\sprites\\enemy.png"),
+	bullet = rl.LoadTexture(".\\sprites\\bullet.png"),
+	dirt = rl.LoadTexture(".\\sprites\\dirt.png"),
+	heart = rl.LoadTexture(".\\sprites\\heart.png"),
+	main = rl.LoadTexture(".\\sprites\\main.png"),
+	over = rl.LoadTexture(".\\sprites\\over.png")
+    }
+    }
+     return Textures {
 	sky = rl.LoadTexture("./sprites/sky.png"),
 	grass = rl.LoadTexture("./sprites/grass-1.png"),
 	grass2 = rl.LoadTexture("./sprites/grass-2.png"),
@@ -608,7 +625,7 @@ enemy_limit := rl.Rectangle {
 
 main :: proc() {
     rl.SetConfigFlags({.WINDOW_RESIZABLE}) 
-    rl.InitWindow(SCREENWIDTH, SCREENHEIGHT, "As aboveground so underground")
+    rl.InitWindow(SCREENWIDTH, SCREENHEIGHT, "Frog Buster")
     defer rl.CloseWindow()
     game := make_game()
     camera := rl.Camera2D {
